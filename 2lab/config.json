@@ -1,0 +1,64 @@
+{
+  "initialStats": {
+    "health": 100,
+    "mana": 0,
+    "happiness": 5,
+    "fatigue": 0,
+    "money": 50
+  },
+  "actions": {
+    "goToWork": {
+      "happiness": -5,
+      "mana": -30,
+      "money": 200,
+      "fatigue": 50
+    },
+    "contemplateNature": {
+      "happiness": 1,
+      "mana": -10,
+      "fatigue": 10
+    },
+    "drinkWineAndWatchSeries": {
+      "happiness": -1,
+      "mana": 30,
+      "fatigue": 10,
+      "health": -5,
+      "money": -20
+    },
+    "goToBar": {
+      "happiness": 1,
+      "mana": 60,
+      "fatigue": 40,
+      "health": -10,
+      "money": -100
+    },
+    "drinkWithMarginals": {
+      "happiness": 5,
+      "mana": 90,
+      "fatigue": 80,
+      "health": -80,
+      "money": -150
+    },
+    "singInMetro": {
+      "happiness": 1,
+      "mana": 10,
+      "fatigue": 20,
+      "money": 10,
+      "bonusMoneyIfManaInRange": [40, 70],
+      "bonusMoney": 50
+    },
+    "sleep": {
+      "healthBonusIfManaBelow": 30,
+      "healthBonus": 90,
+      "happinessPenaltyIfManaAbove": 70,
+      "happinessPenalty": -3,
+      "mana": -50,
+      "fatigue": -70
+    },
+    "book":{
+      "happiness": 2,
+      "mana": -5,
+      "fatigue": 10
+    }
+  }
+}
