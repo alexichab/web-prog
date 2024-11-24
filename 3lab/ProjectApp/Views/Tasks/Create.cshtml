@@ -1,0 +1,55 @@
+@model ProjectApp.Models.Tasks
+
+<h1>Создать задачу</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Название задачи</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AuthorId">Автор задачи</label>
+        <select asp-for="AuthorId" asp-items="ViewBag.AuthorId" class="form-control"></select>
+        <span asp-validation-for="AuthorId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AssigneeId">Исполнитель</label>
+        <select asp-for="AssigneeId" asp-items="ViewBag.AssigneeId" class="form-control"></select>
+        <span asp-validation-for="AssigneeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProjectId">Проект</label>
+        <select asp-for="ProjectId" asp-items="ViewBag.ProjectId" class="form-control"></select>
+        <span asp-validation-for="ProjectId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status">Статус</label>
+        <select asp-for="Status" class="form-control">
+            <option value="ToDo">To Do</option>
+            <option value="InProgress">In Progress</option>
+            <option value="Done">Done</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Priority">Приоритет</label>
+        <input asp-for="Priority" type="number" class="form-control" />
+        <span asp-validation-for="Priority" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Comment">Комментарий</label>
+        <textarea asp-for="Comment" class="form-control"></textarea>
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Создать задачу</button>
+</form>
+
+<a asp-action="Index" class="btn btn-secondary">Назад к списку задач</a>

@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Главная";
+}
+
+<h1>Добро пожаловать в систему управления проектами</h1>
+
+<p>На этой странице вы можете управлять всеми моделями, используемыми в проекте.</p>
+
+<div class="list-group">
+    <a class="list-group-item list-group-item-action" asp-controller="Employees" asp-action="Index">
+        Управление сотрудниками
+    </a>
+    <a class="list-group-item list-group-item-action" asp-controller="Projects" asp-action="Index">
+        Управление проектами
+    </a>
+    <a class="list-group-item list-group-item-action" asp-controller="Tasks" asp-action="Index">
+        Управление задачами
+    </a>
+</div>

@@ -1,0 +1,38 @@
+@model ProjectApp.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h1>Редактирование сотрудника</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="FirstName">Имя</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName">Фамилия</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MiddleName">Отчество</label>
+        <input asp-for="MiddleName" class="form-control" />
+        <span asp-validation-for="MiddleName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" type="email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    <a class="btn btn-secondary" asp-action="Index">Назад к списку</a>
+</form>
