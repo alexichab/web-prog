@@ -10,6 +10,8 @@ namespace ProjectApp.Models
         public string MiddleName { get; set; }
         public string Email { get; set; }
         
+        public string Position { get; set; }
+        
         // Связь многие-ко-многим с проектами
         public ICollection<Project> Projects { get; set; } = new List<Project>();
         

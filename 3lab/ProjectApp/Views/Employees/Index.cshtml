@@ -10,6 +10,7 @@
             <th>Имя</th>
             <th>Фамилия</th>
             <th>Email</th>
+            <th>Позиция</th>
             <th>Действия</th>
         </tr>
     </thead>
@@ -20,6 +21,7 @@
                 <td>@employee.FirstName</td>
                 <td>@employee.LastName</td>
                 <td>@employee.Email</td>
+                <td>@employee.Position</td>
                 <td>
                     <a class="btn btn-info" asp-action="Details" asp-route-id="@employee.Id">Детали</a>
                     <a class="btn btn-warning" asp-action="Edit" asp-route-id="@employee.Id">Редактировать</a>

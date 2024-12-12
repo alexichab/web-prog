@@ -18,7 +18,6 @@ var app = builder.Build();
 app.Lifetime.ApplicationStopping.Register(() =>
 {
     Console.WriteLine("Приложение завершает работу...");
-    // Здесь можно выполнить дополнительные действия, например, очистку ресурсов
 });
 
 // Конфигурация HTTP-пайплайна

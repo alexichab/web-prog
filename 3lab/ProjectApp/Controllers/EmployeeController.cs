@@ -51,7 +51,7 @@ namespace ProjectApp.Controllers
         // Создание сотрудника (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,MiddleName,Email")] Employee employee)
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,MiddleName,Email,Position")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace ProjectApp.Controllers
         // Редактирование сотрудника (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,MiddleName,Email")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,MiddleName,Email,Position")] Employee employee)
         {
             if (id != employee.Id) return NotFound();
 
