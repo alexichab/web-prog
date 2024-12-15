@@ -1,0 +1,10 @@
+@page "{id:int}"
+@model PersonalDiary.Pages.DiaryPosts.DeleteModel
+
+<h1>Удалить запись</h1>
+<p>Вы уверены, что хотите удалить эту запись "@Model.DiaryPost.Title"?</p>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-page="/Index" class="btn btn-secondary">Отмена</a>
+</form>

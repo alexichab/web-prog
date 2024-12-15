@@ -1,0 +1,38 @@
+@page "{id:int}"
+@model PersonalDiary.Pages.DiaryPosts.EditModel
+
+<h1>Редактировать запись</h1>
+
+<form method="post">
+    <label>Категория:</label>
+        <select asp-for="DiaryPost.Category" class="form-control">
+            <option value="Работа">Работа</option>
+            <option value="Личное">Личное</option>
+            <option value="Путешествия">Путешествия</option>
+            <option value="Спорт">Спорт</option>
+            <option value="Разное">Разное</option>
+        </select>
+    <span asp-validation-for="DiaryPost.Category" class="text-danger"></span>
+
+    <input type="hidden" asp-for="DiaryPost.Id" />
+    <label>Заголовок:</label>
+    <input type="text" asp-for="DiaryPost.Title" class="form-control" />
+    <span asp-validation-for="DiaryPost.Title" class="text-danger"></span>
+
+    <label>Контент:</label>
+    <textarea asp-for="DiaryPost.Content" class="form-control"></textarea>
+    <span asp-validation-for="DiaryPost.Content" class="text-danger"></span>
+
+
+    <label>Настроение:</label>
+    <select asp-for="DiaryPost.Mood" class="form-control">
+        <option value="Отлично">😀 Отлично</option>
+        <option value="Хорошо">😊 Хорошо</option>
+        <option value="Нормально">😐 Нормально</option>
+        <option value="Плохо">😟 Плохо</option>
+        <option value="Ужасно">😭 Ужасно</option>
+    </select>
+    <span asp-validation-for="DiaryPost.Mood" class="text-danger"></span>  
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
