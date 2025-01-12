@@ -1,62 +1,74 @@
-    @page
-    @model PersonalDiary.Pages.IndexModel
-    @using PersonalDiary.Models
+@page
+@model PersonalDiary.Pages.IndexModel
+@using PersonalDiary.Models
+@using Microsoft.Extensions.Options
+@inject IOptions<PersonalDiary.Models.AdminSettings> AdminSettings
 
-    <h1>Мой личный дневник</h1>
+<h1>Мой личный дневник</h1>
 
+@if (User.Identity.IsAuthenticated && User.Identity.Name == AdminSettings.Value.AdminEmail)
+{
     <a asp-page="/DiaryPosts/Create" class="btn btn-primary">Создать запись</a>
 
     <form method="get" class="mt-3">
-    <label for="category">Фильтр по категории:</label>
-    <select id="category" name="SelectedCategory" class="form-control">
-        <option value="">Все категории</option>
-        @foreach (var category in Model.DiaryPosts.Select(p => p.Category).Distinct())
-        {
-            <option value="@category" selected="@(Model.SelectedCategory == category)">
-                @category
-            </option>
-
-
-        }
-    </select>
-    <button type="submit" class="btn btn-info mt-2">Применить фильтр</button>
-    <a href="/" class="btn btn-secondary mt-2">Сбросить</a>
+        <label for="category">Фильтр по категории:</label>
+        <select id="category" name="SelectedCategory" class="form-control">
+            <option value="">Все категории</option>
+            @foreach (var category in Model.DiaryPosts.Select(p => p.Category).Distinct())
+            {
+                <option value="@category" selected="@(Model.SelectedCategory == category)">
+                    @category
+                </option>
+            }
+        </select>
+        <button type="submit" class="btn btn-info mt-2">Применить фильтр</button>
+        <a href="/" class="btn btn-secondary mt-2">Сбросить</a>
     </form>
-
 
     @foreach (var DiaryPost in Model.DiaryPosts)
     {
         <div>
             <h2>@DiaryPost.Title</h2>
             <p><strong>Категория:</strong> @DiaryPost.Category</p>
-            <p><pre>@DiaryPost.Content</pre></p>
              <p>Настроение: 
-            @switch (DiaryPost.Mood)
-            {
-                case "Отлично":
-                    @:😀 Отлично
-                    break;
-                case "Хорошо":
-                    @:😊 Хорошо
-                    break;
-                case "Нормально":
-                    @:😐 Нормально
-                    break;
-                case "Плохо":
-                    @:😟 Плохо
-                    break;
-                case "Ужасно":
-                    @:😭 Ужасно
-                    break;
-            }
-        </p>
+                @switch (DiaryPost.Mood)
+                {
+                    case "Отлично":
+                        @:😀 Отлично
+                        break;
+                    case "Хорошо":
+                        @:😊 Хорошо
+                        break;
+                    case "Нормально":
+                        @:😐 Нормально
+                        break;
+                    case "Плохо":
+                        @:😟 Плохо
+                        break;
+                    case "Ужасно":
+                        @:😭 Ужасно
+                        break;
+                }
+            </p>
+            <p><pre>@DiaryPost.Content</pre></p>
+           
             @if (DiaryPost.UpdatedAt != default(DateTime)) 
             {
                 <p><small>Изменено: @DiaryPost.UpdatedAt.ToString("dd.MM.yyyy HH:mm")</small></p>
             }
-            <p><small>@DiaryPost.CreatedAt.ToString("dd.MM.yyyy HH:mm")</small></p>
-            <a asp-page="/DiaryPosts/Edit" asp-route-id="@DiaryPost.Id" class="btn btn-warning">Редактировать</a>
-            <a asp-page="/DiaryPosts/Delete" asp-route-id="@DiaryPost.Id" class="btn btn-danger">Удалить</a>
+            <p><small>Создан: @DiaryPost.CreatedAt.ToString("dd.MM.yyyy HH:mm")</small></p>
+            <br>
+
+            @if (User.Identity.IsAuthenticated && User.Identity.Name == AdminSettings.Value.AdminEmail)
+            {
+                <a asp-page="/DiaryPosts/Edit" asp-route-id="@DiaryPost.Id" class="btn btn-warning">Редактировать</a>
+                <a asp-page="/DiaryPosts/Delete" asp-route-id="@DiaryPost.Id" class="btn btn-danger">Удалить</a>
+            }
         </div>
         <hr />
     }
+}
+else
+{
+    <p>Это личный дневник. Пожалуйста, войдите в свою учетную запись, чтобы получить доступ.</p>
+}
